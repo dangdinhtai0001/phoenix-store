@@ -1,8 +1,22 @@
 import Vue from 'vue'
 import App from './App.vue'
+import vuetify from './plugins/vuetify';
+
+
+import i18n from '@/plugins/i18n';
+
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  i18n,
+  vuetify,
+  render: h => h(App)
+}).$mount('#app');
+
+
+import FlagIcon from 'vue-flag-icon';
+Vue.use(FlagIcon);
+
+
+
