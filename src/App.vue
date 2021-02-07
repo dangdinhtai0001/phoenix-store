@@ -13,14 +13,7 @@
       <v-container fluid>
         <!-- If using vue-router -->
         <v-fade-transition mode="out-in">
-          <!-- <router-view :key="$route.fullPath"></router-view> -->
-          <v-sheet
-            id="scrolling-techniques-6"
-            class="overflow-y-auto"
-            max-height="600"
-          >
-            <v-container style="height: 1000px;"></v-container>
-          </v-sheet>
+          <router-view :key="$route.fullPath"></router-view>
         </v-fade-transition>
       </v-container>
     </v-main>
@@ -33,7 +26,6 @@
 <script>
 export default {
   name: "AppIndex",
-
   components: {
     //CoreSettings: () => import("./components/core/Settings"),
     CoreAppBar: () => import("./components/core/AppBar"),

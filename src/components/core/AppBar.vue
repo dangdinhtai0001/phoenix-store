@@ -46,8 +46,8 @@
             <v-col v-for="(item, n) in menu" :key="n">
               <v-card class="pa-1" flat>
                 <v-btn block>
+                  <v-icon left>{{item.icon}}</v-icon>
                   <span class="caption font-weight-medium">{{item.name}}</span>
-                  <v-icon right>{{item.icon}}</v-icon>
                 </v-btn>
               </v-card>
             </v-col>
