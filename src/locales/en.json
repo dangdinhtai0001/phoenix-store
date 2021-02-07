@@ -2,5 +2,6 @@
     "setting" : "Settings",
     "dark_mode" : "Dark mode",
     "select_language": "Language",
-    "currency": "currency"
+    "currency": "currency",
+    "app_bar_search_palceholder": "What product do you want to find..."
 }
