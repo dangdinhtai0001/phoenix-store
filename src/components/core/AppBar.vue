@@ -46,9 +46,45 @@
             <v-col v-for="(item, n) in menu" :key="n">
               <v-card class="pa-1" flat>
                 <v-btn block>
-                  <v-icon left>{{item.icon}}</v-icon>
-                  <span class="caption font-weight-medium">{{item.name}}</span>
+                  <v-icon left>{{ item.icon }}</v-icon>
+                  <span class="caption font-weight-medium">{{
+                    item.name
+                  }}</span>
                 </v-btn>
+              </v-card>
+            </v-col>
+            <v-col>
+              <v-card class="pa-1" flat>
+                <v-menu v-if="more.length" offset-y>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      block
+                      class="align-self-center mr-4"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      more
+                      <v-icon right>
+                        mdi-menu-down
+                      </v-icon>
+                    </v-btn>
+                  </template>
+
+                  <!-- <v-list>
+                    <v-list-item v-for="item in more" :key="item">
+                      {{ item.name }}
+                    </v-list-item>
+                  </v-list> -->
+
+                  <v-card class="mt-1" flat tile v-for="item in more" :key="item">
+                    <v-btn block>
+                      <v-icon left>{{ item.icon }}</v-icon>
+                      <span class="caption font-weight-medium">{{
+                        item.name
+                      }}</span>
+                    </v-btn>
+                  </v-card>
+                </v-menu>
               </v-card>
             </v-col>
           </v-row>
@@ -70,6 +106,7 @@ export default {
   data: () => ({
     searchContent: "",
     menu: [],
+    more: [],
   }),
   mounted() {
     this.init();
@@ -80,8 +117,10 @@ export default {
     },
 
     initMenu() {
-      this.menu = [...menu_data];
-      console.log(menu_data);
+      let n = 5;
+      let length = menu_data.length;
+      this.menu = [...menu_data].slice(0, n);
+      this.more = [...menu_data].slice(n, length);
     },
 
     findProduct() {

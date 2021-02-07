@@ -35,6 +35,12 @@ const menu_data = [
     color: "primary",
     icon: "mdi-truck",
   },
+  {
+    name: "Chính sáchvận chuyển",
+    url: "/danh_muc_san_pham",
+    color: "primary",
+    icon: "mdi-truck",
+  },
 ];
 
 export default menu_data;
