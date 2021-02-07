@@ -76,7 +76,13 @@
                     </v-list-item>
                   </v-list> -->
 
-                  <v-card class="mt-1" flat tile v-for="item in more" :key="item">
+                  <v-card
+                    class="mt-1"
+                    flat
+                    tile
+                    v-for="(item, i) in more"
+                    :key="i"
+                  >
                     <v-btn block>
                       <v-icon left>{{ item.icon }}</v-icon>
                       <span class="caption font-weight-medium">{{
@@ -117,10 +123,30 @@ export default {
     },
 
     initMenu() {
-      let n = 5;
-      let length = menu_data.length;
-      this.menu = [...menu_data].slice(0, n);
-      this.more = [...menu_data].slice(n, length);
+      console.log(this.$vuetify.breakpoint.name);
+      let n = 0;
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          n = -1;
+          break;
+        case "sm":
+          n = 2;
+          break;
+        case "md":
+          n = 4;
+          break;
+        case "lg":
+          n = 5;
+          break;
+        case "xl":
+          n = 6;
+          break;
+      }
+      if (n > 0) {
+        let length = menu_data.length;
+        this.menu = [...menu_data].slice(0, n);
+        this.more = [...menu_data].slice(n, length);
+      }
     },
 
     findProduct() {

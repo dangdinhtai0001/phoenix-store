@@ -4,6 +4,9 @@ import VueRouter from "vue-router";
 // Routes
 import paths from "../router/paths";
 
+// Nprocess
+import NProgress from "nprogress";
+
 function route(path, view, name, redirect) {
   if (redirect) {
     return {
@@ -39,6 +42,19 @@ const router = new VueRouter({
 });
 
 //BEFORE ROUTE
+router.beforeEach(async (to, from, next) => {
+  NProgress.start();
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    next();
+  } else {
+    next();
+  }
+});
+
+//AFTER ROUTE
+router.afterEach(() => {
+  NProgress.done();
+});
 
 export default router;
 Vue.use(VueRouter);
