@@ -1,5 +1,5 @@
 <template>
-  <v-container class="grey lighten-5" fluid>
+  <v-container fluid>
     <!-- ------------------------------------------------------------------ -->
     <v-row class="mb-6" no-gutters dense>
       <!-- ======================= category ======================= -->
@@ -60,6 +60,7 @@
                             <v-card class="pa-1" flat tile>
                               <v-treeview
                                 activatable
+                                open-on-click
                                 hoverable
                                 color="primary"
                                 :items="getTreviewItem(child.id, child.name)"
@@ -141,7 +142,42 @@
       </v-col>
       <!-- ======================= Promotion 2 ======================= -->
     </v-row>
-    <!-- ------------------------------------------------------------------ -->
+    <!-- ======================= Promotion 3 ======================= -->
+    <v-row>
+      <v-col cols="3">
+        <v-card class="pa-1" outlined tile>
+          <v-img :src="promotion_slot_6.image" height="23vh"></v-img>
+        </v-card>
+      </v-col>
+      <v-col cols="3">
+        <v-card class="pa-1" outlined tile>
+          <v-img :src="promotion_slot_7.image" height="23vh"></v-img>
+        </v-card>
+      </v-col>
+      <v-col cols="3">
+        <v-card class="pa-1" outlined tile>
+          <v-img :src="promotion_slot_8.image" height="23vh"></v-img>
+        </v-card>
+      </v-col>
+      <v-col cols="3">
+        <v-card class="pa-1" outlined tile>
+          <v-img :src="promotion_slot_9.image" height="23vh"></v-img>
+        </v-card>
+      </v-col>
+    </v-row>
+    <!-- ======================= Promotion 3 ======================= -->
+    <div v-for="(item, i) in topItems" :key="i">
+      <v-banner single-line color="primary" class="mb-3" elevation="5">
+        <span class="title font-weight-medium">{{ item.header }}</span>
+      </v-banner>
+      <v-row>
+        <v-col cols="3" v-for="element in item.items" :key="element.id">
+          <v-card class="pa-2" flat tile>
+            <StoreItem :item="element"></StoreItem>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
 </template>
 
@@ -149,14 +185,20 @@
 // FAKE DATA
 import promotions from "@/mock_api/home_get_promotion.js";
 import categories from "@/mock_api/home_get_category_menu.js";
+import top_items from "@/mock_api/get_top_item.js";
 // FAKE DATA
 export default {
   name: "Home",
+  components: {
+    StoreItem: () => import("@/components/store/Item"),
+  },
   data: () => ({
     categoryCols: 0,
     promotionCols: 0,
 
     categories: [],
+
+    topItems: [],
 
     promotions: [],
     promotion_slot_1: "",
@@ -164,12 +206,16 @@ export default {
     promotion_slot_3: "",
     promotion_slot_4: "",
     promotion_slot_5: "",
+    promotion_slot_6: "",
+    promotion_slot_7: "",
+    promotion_slot_8: "",
+    promotion_slot_9: "",
   }),
-  components: {},
   mounted() {
     this.setGridData();
     this.setPromotionData();
     this.setCategoriesData();
+    this.setTopItems();
   },
   methods: {
     setGridData() {
@@ -214,6 +260,18 @@ export default {
         if (element.slot === 5) {
           this.promotion_slot_5 = { ...element };
         }
+        if (element.slot === 6) {
+          this.promotion_slot_6 = { ...element };
+        }
+        if (element.slot === 7) {
+          this.promotion_slot_7 = { ...element };
+        }
+        if (element.slot === 8) {
+          this.promotion_slot_8 = { ...element };
+        }
+        if (element.slot === 9) {
+          this.promotion_slot_9 = { ...element };
+        }
       });
     },
     setCategoriesData() {
@@ -235,7 +293,6 @@ export default {
 
       return r;
     },
-
     getTreviewItem(parentId, name) {
       let child = [...this.getChildItem(parentId)];
       return [
@@ -244,6 +301,9 @@ export default {
           children: child,
         },
       ];
+    },
+    setTopItems() {
+      this.topItems = [...top_items];
     },
   },
 };
