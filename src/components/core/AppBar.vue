@@ -39,7 +39,7 @@
         <v-icon>mdi-cart</v-icon>
       </v-btn>
 
-      <template v-slot:extension>
+      <template v-slot:extension class="d-none d-xl-flex">
         <!----------------------- Category ----------------------->
         <v-tabs fixed-tabs center-active show-arrows>
           <v-row no-gutters style="height: 150px;">
@@ -70,12 +70,6 @@
                     </v-btn>
                   </template>
 
-                  <!-- <v-list>
-                    <v-list-item v-for="item in more" :key="item">
-                      {{ item.name }}
-                    </v-list-item>
-                  </v-list> -->
-
                   <v-card
                     class="mt-1"
                     flat
@@ -103,9 +97,9 @@
 </template>
 
 <script>
-// fake data
+// FAKE DATA
 import menu_data from "@/mock_api/get_appbar_menu.js";
-// fake data
+// FAKE DATA
 export default {
   name: "CoreAppBar",
 
