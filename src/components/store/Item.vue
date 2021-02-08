@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto pt-2"  rounded>
+  <v-card class="mx-auto pt-2" rounded>
     <template slot="progress">
       <v-progress-linear
         color="deep-purple"
@@ -44,7 +44,10 @@
           size="14"
         ></v-rating>
 
-        <div class="grey--text ml-4">({{ item.ratingCount }} votes)</div>
+        <div class="grey--text ml-4">
+          <span class="font-weight-medium">{{ item.rating }}* </span>
+          <span>({{ item.ratingCount }} votes)</span>
+        </div>
       </v-row>
 
       <div class="my-4 subtitle-1">
