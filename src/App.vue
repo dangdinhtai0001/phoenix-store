@@ -19,6 +19,10 @@
           ></router-view>
         </v-fade-transition>
       </v-container>
+
+      <v-btn color="primary" fab fixed bottom right @click="up2Top">
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
     </v-main>
 
     <!-- footer -->
@@ -38,5 +42,15 @@ export default {
   data: () => ({
     //
   }),
+
+  methods: {
+    up2Top() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    },
+  },
 };
 </script>
