@@ -3,5 +3,15 @@
     "dark_mode": "Chế độ tối",
     "select_language": "Ngôn ngữ",
     "currency": "Tiền tệ",
-    "app_bar_search_palceholder": "Bạn cần tìm sản phẩm nào..."
+    "app_bar_search_palceholder": "Bạn cần tìm sản phẩm nào...",
+    "footer_banner": "Mua hàng online với nhiều ưu đãi hơn tại Vue Store",
+    "footer_tf_register_placeholder": "Nhập email của bạn...",
+    "footer_btn_register": "Đăng kí",
+    "footer_lbl_categories": "Danh mục",
+    "footer_lbl_menu": "Chức năng",
+    "footer_lbl_contact": "Liên hệ",
+    "footer_lbl_contact_address": "Địa chỉ",
+    "footer_lbl_contact_phone": "Số điện thoại"
+
+
 }

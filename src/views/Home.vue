@@ -167,14 +167,14 @@
     </v-row>
     <!-- ======================= Promotion 3 ======================= -->
     <div v-for="(item, i) in topItems" :key="i">
-      <v-banner single-line color="primary" class="mb-3" elevation="5">
+      <v-banner single-line color="primary" class="my-3" elevation="6">
         <span class="title font-weight-medium">{{ item.header }}</span>
       </v-banner>
       <v-row>
         <v-col cols="3" v-for="element in item.items" :key="element.id">
-          <v-card class="pa-2" flat tile>
-            <StoreItem :item="element"></StoreItem>
-          </v-card>
+          <!-- <v-card class="pa-2" flat tile> -->
+          <StoreItem :item="element"></StoreItem>
+          <!-- </v-card> -->
         </v-col>
       </v-row>
     </div>

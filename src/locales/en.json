@@ -1,7 +1,15 @@
 {
-    "setting" : "Settings",
-    "dark_mode" : "Dark mode",
+    "setting": "Settings",
+    "dark_mode": "Dark mode",
     "select_language": "Language",
     "currency": "currency",
-    "app_bar_search_palceholder": "What product do you want to find..."
+    "app_bar_search_palceholder": "What product do you want to find...",
+    "footer_banner": "Mua hàng online với nhiều ưu đãi hơn tại VueStore",
+    "footer_tf_register_placeholder": "",
+    "footer_btn_register": "Register",
+    "footer_lbl_categories": "Categories",
+    "footer_lbl_menu": "Menu",
+    "footer_lbl_contact": "Contact",
+    "footer_lbl_contact_address": "Address",
+    "footer_lbl_contact_phone": "Phone"
 }
