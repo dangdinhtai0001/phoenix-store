@@ -42,7 +42,7 @@ const store_metadata = {
       value: "https://www.json-generator.com/",
     },
     {
-      key: "mdi-linkedin",
+      key: "mdi-youtube",
       value: "https://www.json-generator.com/",
     },
     {

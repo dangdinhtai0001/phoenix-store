@@ -5,15 +5,24 @@
  */
 
 export default [
+  // ====================== store ======================
   {
     path: "/home",
     name: "Home",
     view: "Home",
   },
   {
+    path: "/collection",
+    name: "Collection",
+    view: "Collection",
+    query: true
+  },
+  // ====================== redirect ======================
+  {
     path: "/",
     redirect: "/home",
   },
+  // ====================== default ======================
   {
     path: "/error",
     name: "ERROR",

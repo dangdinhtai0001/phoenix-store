@@ -41,12 +41,17 @@
                       <v-col cols="8">
                         <v-card class="pa-1 overflow-y-auto" flat tile>
                           <v-card-title>
-                            <v-icon class="mr-2 font-weight-medium">{{
-                              item.icon
-                            }}</v-icon>
-                            <span class="title font-weight-medium">{{
-                              item.name
-                            }}</span>
+                            <v-btn
+                              text
+                              @click="goToCategoryCollection(item.id)"
+                            >
+                              <v-icon class="mr-2 font-weight-medium">{{
+                                item.icon
+                              }}</v-icon>
+                              <span class="title font-weight-medium">{{
+                                item.name
+                              }}</span>
+                            </v-btn>
                           </v-card-title>
 
                           <v-divider></v-divider>
@@ -58,13 +63,28 @@
                             :key="i"
                           >
                             <v-card class="pa-1" flat tile>
-                              <v-treeview
-                                activatable
-                                open-on-click
-                                hoverable
-                                color="primary"
-                                :items="getTreviewItem(child.id, child.name)"
-                              ></v-treeview>
+                              <v-list color="">
+                                <v-list-group :value="true" no-action sub-group>
+                                  <template v-slot:activator>
+                                    <v-list-item-content>
+                                      <v-list-item-title
+                                        class="red--text font-weight-medium"
+                                        @click="goToCategoryCollection(child.id)"
+                                      >
+                                        {{ child.name }}</v-list-item-title
+                                      >
+                                    </v-list-item-content>
+                                  </template>
+
+                                  <v-list-item
+                                    v-for="(item, i) in getChildItem(child.id)"
+                                    :key="i"
+                                    link
+                                  >
+                                    <span @click="goToCategoryCollection(item.id)">{{ item.name }}</span>
+                                  </v-list-item>
+                                </v-list-group>
+                              </v-list>
                             </v-card>
                           </v-col>
                         </v-row>
@@ -293,17 +313,11 @@ export default {
 
       return r;
     },
-    getTreviewItem(parentId, name) {
-      let child = [...this.getChildItem(parentId)];
-      return [
-        {
-          name: name,
-          children: child,
-        },
-      ];
-    },
     setTopItems() {
       this.topItems = [...top_items];
+    },
+    goToCategoryCollection(id) {
+      this.$router.push({ path: "/collection", query: { category: id } });
     },
   },
 };

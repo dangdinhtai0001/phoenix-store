@@ -7,7 +7,7 @@ import paths from "../router/paths";
 // Nprocess
 import NProgress from "nprogress";
 
-function route(path, view, name, redirect) {
+function route(path, view, name, redirect, query) {
   if (redirect) {
     return {
       path: path,
@@ -17,6 +17,7 @@ function route(path, view, name, redirect) {
     return {
       name: name || view,
       path,
+      query: query,
       component: (resolve) => import(`@/views/${view}.vue`).then(resolve),
     };
   }
@@ -26,7 +27,7 @@ function route(path, view, name, redirect) {
 const router = new VueRouter({
   mode: "history",
   routes: paths
-    .map((path) => route(path.path, path.view, path.name, path.redirect))
+    .map((path) => route(path.path, path.view, path.name, path.redirect, path.query))
     .concat([
       { path: "*", redirect: { name: "ERROR", query: { code: "404" } } },
     ]),
